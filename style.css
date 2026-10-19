@@ -21,9 +21,11 @@ body {
 }
 
 header {
-    width: 800px;
+    width: 80%;
+    max-width: 800px;
     height: auto;
     margin: auto;
+    padding: 20px;
     padding-top: 75px;
     padding-bottom: 75px;
     background-color: rgb(255, 115, 0);
@@ -38,9 +40,11 @@ header h1 {
 }
 
 main {
-    width: 800px;
-    height: 800px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 800px;
     margin: auto;
+    padding: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: black;
@@ -52,5 +56,13 @@ main p {
     font-family: "halloween2";
     font-size: 50px;
     color: white;
-    margin-left: 50px;
+}
+
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 50px;
+    }
+    main p {
+        font-size: 40px;
+    }
 }

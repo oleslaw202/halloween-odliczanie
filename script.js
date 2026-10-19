@@ -29,6 +29,16 @@ function update(){
     });
 }
 
+let timeDiff = Date.now() / 1000;
+function check() {
+    console.log("checked");
+    if(parseInt(timeDiff) < parseInt(Date.now() / 1000)) {
+        timeDiff = parseInt(Date.now() / 1000);
+        update();
+        console.log("invoked");
+    }
+}
+
 update();
-setInterval(update, 1000);
+setInterval(check, 10);
 
