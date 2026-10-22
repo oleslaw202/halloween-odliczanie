@@ -5,40 +5,81 @@ const godziny = document.getElementById("godziny");
 const dni = document.getElementById("dni");
 const dateValues = [sekundy, minuty, godziny, dni];
 
+const timer = document.getElementById("timer");
+
+const countdownDiv = document.getElementById("countdown");
+const countdownTimer = document.getElementById("countdown").querySelector("h1");
+
+const piosenka = document.getElementById("piosenka");
+
 function update(){
+    let timerSplit = timer.innerText.split(" ");
     dateValues.forEach(value => {
         let splitted = value.innerText.split(":");
         let newValue = dataPrzyjazdu.getTime() - Date.now();
         switch(value){
             case dateValues[0]:
                 newValue = Math.ceil(newValue / 1000);
+                timerSplit[1] = newValue % 60;
+                if(newValue <= 10 && newValue >= 0) {
+                    countdownDiv.hidden = false;
+                    countdownTimer.innerText = newValue;
+                } else if(newValue < 0) {
+                    countdownDiv.hidden = false;
+                    countdownDiv.style.backgroundImage = `url("rainbow.gif")`;
+                    countdownDiv.style.opacity = 0.25;
+                    countdownTimer.hidden = true;
+                    countdownDiv.querySelector("img").hidden = false;
+                    if(piosenka.paused == true) {
+                        piosenka.play();
+                    }
+                }
                 break;
             case dateValues[1]:
-                newValue = Math.ceil(newValue / 1000 / 60);
+                newValue = newValue / 1000 / 60;
+                if(newValue >= 0) {
+                    newValue = Math.floor(newValue);
+                } else {
+                    newValue = Math.ceil(newValue);
+                }
+                timerSplit[2] = newValue % 60;
                 break;
             case dateValues[2]:
-                newValue = Math.ceil(newValue / 1000 / 60 / 60);
+                newValue = newValue / 1000 / 60 / 60;
+                if(newValue >= 0) {
+                    newValue = Math.floor(newValue);
+                } else {
+                    newValue = Math.ceil(newValue);
+                }
+                timerSplit[3] = newValue % 60;            
                 break;
             case dateValues[3]:
-                newValue = Math.ceil(newValue / 1000 / 60 / 60 / 24);
-                
+                newValue = newValue / 1000 / 60 / 60 / 24;
+                if(newValue >= 0) {
+                    newValue = Math.floor(newValue);
+                } else {
+                    newValue = Math.ceil(newValue);
+                }
+                timerSplit[4] = newValue;
                 break;
         }
         splitted[1] = newValue.toFixed();
         value.innerText = splitted.join(": ");
     });
+    timerSplit[1] += "s";
+    timerSplit[2] += "m";
+    timerSplit[3] += "g";
+    timerSplit[4] += "d";
+    timer.innerText = timerSplit.join(" ");
 }
 
 let timeDiff = Date.now() / 1000;
 function check() {
-    console.log("checked");
     if(parseInt(timeDiff) < parseInt(Date.now() / 1000)) {
         timeDiff = parseInt(Date.now() / 1000);
         update();
-        console.log("invoked");
     }
 }
 
 update();
-setInterval(check, 10);
-
+setInterval(check, 10); 

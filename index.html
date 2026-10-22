@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <audio  id="piosenka">
+        <source src="piosenka.mp3" type="audio/mpeg">
+    </audio>
     <header>
         <h1>Odliczanie do przyjazdu</h1>
     </header>
@@ -15,7 +18,12 @@
         <p id="minuty">W minutach:</p>
         <p id="godziny">W godzinach:</p>
         <p id="dni">W dniach:</p>
+        <p id="timer">timer: 00:00:00:00</p>
     </main>
+    <div id="countdown" hidden>
+        <h1>0</h1>
+        <img src="confetti.gif" hidden>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

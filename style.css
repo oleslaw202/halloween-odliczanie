@@ -14,9 +14,8 @@
 
 body {
     background-color: black;
-    background-image: url("halloweenbackground.jpg");
-    background-repeat:no-repeat;
-    background-size: cover;
+    background-image: url("halloweenbackground2.png");
+    background-repeat: repeat;
 }
 
 header {
@@ -57,11 +56,53 @@ main p {
     color: white;
 }
 
-@media (max-width: 700px) {
+#countdown {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#countdown h1 {
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    margin-top: 400px;
+}
+
+#countdown img {
+    width: 100vw;
+    height: 100vh;
+}
+
+@media (max-width: 1000px) {
     header h1 {
         font-size: 50px;
     }
     main p {
         font-size: 40px;
     }
+
+    #countdown h1 {
+        margin-top: 250px;
+    }
+}
+
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 30px;
+    }
+    main p {
+        font-size: 20px;
+    }
+}
+
+@keyframes party {
+    0% {zoom: 100%;}
+    25% {zoom: 250%;}
+    50% {zoom: 0%;}
+    75% {zoom: 250%}
+    100% {zoom: 100%;}
 }
