@@ -20,7 +20,7 @@ function update(){
         switch(value){
             case dateValues[0]:
                 newValue = Math.ceil(newValue / 1000);
-                timerSplit[1] = newValue % 60;
+                timerSplit[4] = newValue % 60;
                 if(newValue <= 10 && newValue >= 0) {
                     countdownDiv.hidden = false;
                     countdownTimer.innerText = newValue;
@@ -42,7 +42,7 @@ function update(){
                 } else {
                     newValue = Math.ceil(newValue);
                 }
-                timerSplit[2] = newValue % 60;
+                timerSplit[3] = newValue % 60;
                 break;
             case dateValues[2]:
                 newValue = newValue / 1000 / 60 / 60;
@@ -51,7 +51,7 @@ function update(){
                 } else {
                     newValue = Math.ceil(newValue);
                 }
-                timerSplit[3] = newValue % 60;            
+                timerSplit[2] = newValue % 24;            
                 break;
             case dateValues[3]:
                 newValue = newValue / 1000 / 60 / 60 / 24;
@@ -60,16 +60,16 @@ function update(){
                 } else {
                     newValue = Math.ceil(newValue);
                 }
-                timerSplit[4] = newValue;
+                timerSplit[1] = newValue;
                 break;
         }
         splitted[1] = newValue.toFixed();
         value.innerText = splitted.join(": ");
     });
-    timerSplit[1] += "s";
-    timerSplit[2] += "m";
-    timerSplit[3] += "g";
-    timerSplit[4] += "d";
+    timerSplit[4] += "s";
+    timerSplit[3] += "m";
+    timerSplit[2] += "g";
+    timerSplit[1] += "d";
     timer.innerText = timerSplit.join(" ");
 }
 
