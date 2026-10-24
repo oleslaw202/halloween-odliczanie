@@ -1,4 +1,4 @@
-const dataPrzyjazdu = new Date(2026, 9, 25, 0, 0, 0);
+const dataPrzyjazdu = new Date(2026, 9, 25, 11, 30, 0);
 const sekundy = document.getElementById("sekundy");
 const minuty = document.getElementById("minuty");
 const godziny = document.getElementById("godziny");
